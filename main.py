@@ -194,7 +194,7 @@ clear_button = tk.Button(
     pady=8,
     cursor="hand2",
     activebackground="#3d3d3d",
-    command=lambda: [search_var.set(""), process_manager.refresh_process_list(process_list)]
+    command=lambda: [search_var.set(""), process_manager.show_process_list(process_list)]
 )
 clear_button.pack(fill="x")
 
@@ -237,7 +237,6 @@ for option in sort_options:
         activebackground="#252525",
         activeforeground="#00d4aa",
         cursor="hand2",
-        #use process_managers fun
         command=lambda: process_manager.sort_process_list(process_list, sort_var.get())
     )
     rb.pack(anchor="w", pady=2)
@@ -391,7 +390,7 @@ def on_tree_click(event):
                 
 process_list.bind("<Button-1>", on_tree_click)
 process_manager.show_process_list(process_list, process_count_label)
-# process_manager.start_auto_refresh(process_list, auto_refresh_var, process_count_label)
+process_manager.start_auto_refresh(process_list, auto_refresh_var, process_count_label)
 
 
 show_frame("System")
